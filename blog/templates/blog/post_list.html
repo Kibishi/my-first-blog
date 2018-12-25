@@ -21,7 +21,9 @@
                 {{ post.published_date }}
               </div>
               <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-              <p>{{ post.text|linebreaksbr }}</p>
+              {% if user.is_authenticated %}
+                  <p>{{ post.text|linebreaksbr }}</p>
+              {% endif %}
           </div>
         {% endfor %}
       {% endblock %}
